@@ -97,17 +97,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    moving = true;
 	  }
-	
+
 	  if (document.querySelector('html').style.overflowY === 'hidden') {
 	    return;
 	  }
-	
+
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+      deltaY *= 4;
+    }
+
 	  scrollY = stayInRange(0, document.querySelector('html').offsetHeight - window.innerHeight,
 	  // getSpringVal(scrollY) + deltaY
 	  window.scrollY + deltaY * mousewheelSensitivity);
 	  window.scrollTo(window.scrollX, scrollY);
 	}
-	
+
 	function onkeydown(e) {
 	  if (e.target === document.body && e.key === 'ArrowDown') {
 	    e.preventDefault();

@@ -43,6 +43,10 @@ function move(deltaY) {
   if (document.querySelector('html').style.overflowY === 'hidden') {
     return;
   }
+  
+  if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    deltaY *= 4;
+  }
 
   scrollY = stayInRange(
     0,
